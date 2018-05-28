@@ -1,0 +1,27 @@
+
+<form action="" class="formulaire" method="POST">
+  <fieldset>
+    <legend>Créez votre compte:</legend>
+    Nom:<br>
+    <input type="text" name="nom" value=""><br>
+    Prénom:<br>
+    <input type="text" name="prenom" value=""><br>
+    E-mail:<br>
+    <input type="email" name="email" value=""><br><br>
+    <label for="select">Civilité</label>
+        <select name="civilite" id="select"> Civilité  
+            <option 
+              *ngFor="let genre of civilite"
+              value="{{genre}}">
+              {{genre}}
+            </option>
+        </select> <br><br>
+    Mot de passe:<br>
+    <input type="password" name="password" value=""><br><br>
+    <input type="checkbox" name="cgu" value=""> J'accepte les CGU<br><br>
+    <input type="submit" value="Créer mon compte">
+    <input type="submit" value="Annuler">
+    <br>
+    <br>			
+  </fieldset>
+</form>
