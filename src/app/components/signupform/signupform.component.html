@@ -1,27 +1,46 @@
 
-<form action="" class="formulaire" method="POST">
+<form class="formulaire form-control" [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
   <fieldset>
     <legend>Créez votre compte:</legend>
+    
+
     Nom:<br>
-    <input type="text" name="nom" value=""><br>
+    <input type="text" name="nom" value="" class="form-control" formControlName="nom"><br>
+    <p class="alert alert-warning" *ngIf="signUpForm.controls.nom.invalid && signUpForm.controls.nom.touched">
+      Ce champs est obligatoire
+    </p>
     Prénom:<br>
-    <input type="text" name="prenom" value=""><br>
+    <input type="text" name="prenom" value="" class="form-control"  formControlName="prenom"><br>
+    <div class="alert alert-warning" *ngIf="email.invalid && email.touched" >
+        <div *ngIf="email.errors?.required" >
+          L'adresse e-mail ne peut pas etre vide
+        </div>
+        <div *ngIf="email.errors?.email" >
+            L'adresse e-mail saisie n'est pas valide
+        </div>
+    </div>
     E-mail:<br>
-    <input type="email" name="email" value=""><br><br>
+    <input type="email" name="email" value="" class="form-control" formControlName="email" ><br><br>
     <label for="select">Civilité</label>
-        <select name="civilite" id="select"> Civilité  
+        <select name="civilite" id="select" class="form-control" formControlName="civilite"> 
             <option 
               *ngFor="let genre of civilite"
-              value="{{genre}}">
-              {{genre}}
+              value="{{genre.id}}">
+              {{genre.libelle}}
             </option>
         </select> <br><br>
     Mot de passe:<br>
-    <input type="password" name="password" value=""><br><br>
-    <input type="checkbox" name="cgu" value=""> J'accepte les CGU<br><br>
-    <input type="submit" value="Créer mon compte">
-    <input type="submit" value="Annuler">
+    <input type="password" name="password" value="" class="form-control" formControlName="password"><br><br>
+    <div class="alert alert-warning" *ngIf="password.invalid && password.touched" >
+      Veuillez choisir un mot de passe
+    </div>
+    <input type="checkbox" name="cgu" value="" class="form-control" formControlName="cgu"> J'accepte les CGU<br><br>
+    <input type="submit" value="Créer mon compte" [disabled]="!signUpForm.valid">
+    <input type="submit" value="Annuler" >
     <br>
     <br>			
   </fieldset>
 </form>
+<p>
+  Valeurs: {{signUpForm.value | json }} : {{signUpForm.status | json}}
+</p>
