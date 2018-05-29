@@ -6,8 +6,8 @@ import { SignupformComponent } from './components/signupform/signupform.componen
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './modules/routing/routing.module';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,9 @@ import { RoutingModule } from './modules/routing/routing.module';
     BrowserModule, 
     ReactiveFormsModule,
     RouterModule, 
-    RoutingModule
+    RoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

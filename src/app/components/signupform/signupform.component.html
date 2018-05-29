@@ -11,16 +11,20 @@
     </p>
     Prénom:<br>
     <input type="text" name="prenom" value="" class="form-control"  formControlName="prenom"><br>
-    <div class="alert alert-warning" *ngIf="email.invalid && email.touched" >
-        <div *ngIf="email.errors?.required" >
-          L'adresse e-mail ne peut pas etre vide
-        </div>
-        <div *ngIf="email.errors?.email" >
-            L'adresse e-mail saisie n'est pas valide
-        </div>
+    <div class="alert alert-warning" *ngIf="prenom.invalid && prenom.touched" >
+      Veuillez renseigner un prénom
     </div>
+    
     E-mail:<br>
     <input type="email" name="email" value="" class="form-control" formControlName="email" ><br><br>
+    <div class="alert alert-warning" *ngIf="email.invalid && email.touched" >
+      <div *ngIf="email.errors?.required" >
+        L'adresse e-mail ne peut pas etre vide
+      </div>
+      <div *ngIf="email.errors?.email" >
+        L'adresse e-mail saisie n'est pas valide
+      </div>
+    </div>
     <label for="select">Civilité</label>
         <select name="civilite" id="select" class="form-control" formControlName="civilite"> 
             <option 
@@ -36,7 +40,7 @@
     </div>
     <input type="checkbox" name="cgu" value="" class="form-control" formControlName="cgu"> J'accepte les CGU<br><br>
     <input type="submit" value="Créer mon compte" [disabled]="!signUpForm.valid">
-    <input type="submit" value="Annuler" >
+    <input type="button" value="Annuler" >
     <br>
     <br>			
   </fieldset>

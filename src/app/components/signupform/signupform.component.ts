@@ -4,6 +4,7 @@ import {User} from "../../models/user";
 import {FormControl, FormGroup, Validators,} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import {Router} from '@angular/router'
+//import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-signupform',
@@ -15,6 +16,7 @@ export class SignupformComponent implements OnInit {
   public civilite: Civilite[]; //tableau des civilités à afficher dans le formulaire
   private user: User; //instance du modèle user
   public signUpForm : FormGroup; //instance du modèle 
+ // public home : HomeComponent;
 
 
   constructor(private userService: UserService, private router: Router) { 
@@ -39,6 +41,7 @@ export class SignupformComponent implements OnInit {
   }
   
     public onFormSubmit() : void{
+      
       if (this.signUpForm.valid) {
         this.user = new User(this.signUpForm.value)//création d'un objet user lorsqu'on crée un compte
         console.log("Le formulaire est valide! " + JSON.stringify(this.signUpForm.value));
@@ -46,8 +49,9 @@ export class SignupformComponent implements OnInit {
             //traitement terminé
             this.router.navigate(['home']);
         });
+        
         console.log(this.user)
-
+        
       }
       else {
         console.log("Try again");
