@@ -3,6 +3,7 @@ import {Civilite} from "../../models/civilite";
 import {User} from "../../models/user";
 import {FormControl, FormGroup, Validators,} from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-signupform',
@@ -16,7 +17,7 @@ export class SignupformComponent implements OnInit {
   public signUpForm : FormGroup; //instance du modèle 
 
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService, private router: Router) { 
     this.civilite= new Array;
     this.civilite.push({ id: 1, libelle: "Mademoiselle"});
     this.civilite.push({id: 2, libelle: "Madame"});
@@ -43,8 +44,10 @@ export class SignupformComponent implements OnInit {
         console.log("Le formulaire est valide! " + JSON.stringify(this.signUpForm.value));
         this.userService.saveUser(this.user).then((datas) => {
             //traitement terminé
+            this.router.navigate(['home']);
         });
         console.log(this.user)
+
       }
       else {
         console.log("Try again");
