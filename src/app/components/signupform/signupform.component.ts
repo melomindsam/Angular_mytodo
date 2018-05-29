@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Civilite} from "../../models/civilite";
 import {User} from "../../models/user";
 import {FormControl, FormGroup, Validators,} from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-signupform',
@@ -15,7 +16,7 @@ export class SignupformComponent implements OnInit {
   public signUpForm : FormGroup; //instance du modèle 
 
 
-  constructor() { 
+  constructor(private userService: UserService) { 
     this.civilite= new Array;
     this.civilite.push({ id: 1, libelle: "Mademoiselle"});
     this.civilite.push({id: 2, libelle: "Madame"});
@@ -38,10 +39,15 @@ export class SignupformComponent implements OnInit {
   
     public onFormSubmit() : void{
       if (this.signUpForm.valid) {
-        console.log("Le formulaire est valide! " + JSON.stringify(this.signUpForm.value))
+        this.user = new User(this.signUpForm.value)//création d'un objet user lorsqu'on crée un compte
+        console.log("Le formulaire est valide! " + JSON.stringify(this.signUpForm.value));
+        this.userService.saveUser(this.user).then((datas) => {
+            //traitement terminé
+        });
+        console.log(this.user)
       }
       else {
-        console.log("Try again")
+        console.log("Try again");
       }
     }
   
