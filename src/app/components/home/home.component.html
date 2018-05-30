@@ -1,4 +1,18 @@
-
-<p>
-  home works!
-</p>
+<form [formGroup] = "taskForm"  class = "form-control formulaire_tache" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tâche</label>
+    <input type="text" class="form-control" id="task" aria-describedby="emailHelp" placeholder="libellé de la tâche" formControlName="task">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Date début</label>
+    <input type="date" class="form-control" id="debut" aria-describedby="emailHelp" formControlName="debut">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Date fin</label>
+    <input type="date" class="form-control" id="fin" aria-describedby="emailHelp" formControlName="fin">
+  </div>
+  <div class="form-group form-check">
+  </div>
+  <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+<app-todolist></app-todolist>

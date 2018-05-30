@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tache</th>
+      <th>Debut</th>
+      <th>Fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos">
+      <td>{{todo.task}}</td>
+      <td>{{todo.debut}}</td>
+      <td>j{{todo.fin}}</td>
+    </tr>
+    
+  </tbody>
+</table>

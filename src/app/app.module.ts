@@ -8,12 +8,16 @@ import { RouterModule } from '@angular/router';
 import { RoutingModule } from './modules/routing/routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {HttpClientModule} from '@angular/common/http';
+import { TodolistComponent } from './components/todolist/todolist.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupformComponent,
-    HomeComponent
+    HomeComponent,
+    TodolistComponent
   ],
   imports: [
     BrowserModule, 
@@ -21,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule, 
     RoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
